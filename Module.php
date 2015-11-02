@@ -4,7 +4,7 @@ namespace gechet\title;
 
 class Module extends \yii\base\Module
 {
-    public $controllerNamespace = 'common\modules\title\controllers';
+    public $controllerNamespace = 'gechet\title\controllers';
 
     public function init()
     {
