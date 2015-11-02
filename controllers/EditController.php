@@ -3,11 +3,13 @@
 namespace gechet\title\controllers;
 
 use yii\web\Controller;
+use gechet\title\models\Titles;
 
 class EditController extends Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+			//$data = Titles::f
+      return $this->render('index');
     }
 }
