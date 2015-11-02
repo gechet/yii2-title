@@ -1,0 +1,22 @@
+{
+		"name": "gechet/yii2-title",
+		"description": "Test app for Antagosoft.",
+		"type": "yii2-extension",
+		"keywords": ["yii2", "extension", "title", "test"],
+		"license": "BSD 3-Clause",
+		"authors": [
+				{
+						"name": "Serhii Chepela",
+						"email": "scheoriginal@gmail.com"
+				}
+		],
+		"require": {
+				"php": ">=5.4.0",
+				"yiisoft/yii2": "*"
+		},
+		 "autoload": {
+				"psr-4": {
+						"gechet\\title\\": ""
+				}
+		}
+}
