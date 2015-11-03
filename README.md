@@ -1,6 +1,6 @@
 # yii2-title
 
-Тестовое задание для Antagosoft
+Тестовое задание для Antagosoft.
 
 # Установка
 Добавляем в require в compoer.json 
