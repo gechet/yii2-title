@@ -11,36 +11,44 @@ use Yii;
  * @property string $url
  * @property string $title
  */
-class Titles extends \yii\db\ActiveRecord
-{
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'titles';
-    }
+class Titles extends \yii\db\ActiveRecord {
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['url', 'title'], 'required'],
-            [['url', 'title'], 'string', 'max' => 255],
-        ];
-    }
+	const SCENARIO_NEW = "new";
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'url' => Yii::t('app', 'Url'),
-            'title' => Yii::t('app', 'Title'),
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName() {
+		return 'titles';
+	}
+	
+	public function scenarios() {
+		return [
+				self::SCENARIO_DEFAULT =>['url','title'],
+				self::SCENARIO_NEW => ['url','title'],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules() {
+		return [
+				[['url', 'title'], 'required', 'on' =>  self::SCENARIO_DEFAULT],
+				[['url', 'title'], 'safe', 'on' =>  self::SCENARIO_DEFAULT],
+				[['url', 'title'], 'string', 'max' => 255],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels() {
+		return [
+				'id' => Yii::t('app', 'ID'),
+				'url' => Yii::t('app', 'Url'),
+				'title' => Yii::t('app', 'Title'),
+		];
+	}
+	
 }

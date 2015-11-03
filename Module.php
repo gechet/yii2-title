@@ -2,14 +2,33 @@
 
 namespace gechet\title;
 
-class Module extends \yii\base\Module
-{
-    public $controllerNamespace = 'gechet\title\controllers';
+use yii\base\Application;
 
-    public function init()
-    {
-        parent::init();
+class Module extends \yii\base\Module implements \yii\base\BootstrapInterface{
 
-        // custom initialization code goes here
-    }
+	public $controllerNamespace = 'gechet\title\controllers';
+
+	public function init() {
+		parent::init();
+	}
+	
+	/**
+	 * 
+	 * @inheritdoc
+	 */
+	public function bootstrap($app) {
+		$app->on(Application::EVENT_BEFORE_ACTION, function () use ($app) {
+			$app->view->title= $this->getTitle();
+    });
+	}
+	
+	/**
+	 * 
+	 * @return type
+	 */
+	protected function getTitle() {
+		$title = (new models\GetTitle())->returnTitle();
+		return $title;
+	}
+
 }
